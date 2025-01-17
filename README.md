@@ -14,7 +14,7 @@ DAG operations capabilities:
 - Run some Python code, steps will be explicit and not rely on pre-determined operators like Airflow
 
 User Interface:
-- Not part of this first iteration; will return the statuses from a GET request reponse body
+- Minimalist: will allow users to see DAGs, their last runs and a few buttons to manipulate the DB CRUD-style. 
 
 ### Non-Functional requirements:
 - Code parser must be able to translate a DAG into meta data
