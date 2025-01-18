@@ -9,14 +9,26 @@
             font-family: Arial, sans-serif;
             text-align: left;
             margin: 0;
-            padding: 0;
+            padding: 10px;
             background-color: #f4f4f4;
         }
         header {
-            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #f4f4f4;
+            padding: 10px;
             background-color: #007bff;
             color: white;
-            padding: 1rem 0;
+        }
+        header img {
+            align-items: center;
+            height: 50px;
+            width: auto;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
         }
         main {
             padding: 2rem;
@@ -37,7 +49,7 @@
             text-align: left;
         }
         h1 {
-            text-align: center;
+            text-align: left;
         h2 {
             text-align: left;
         }
@@ -45,16 +57,18 @@
 </head>
 <body>
     <header>
+        <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Logo">
         <h1>Welcome to JoShea Workflows!</h1>
     </header>
     <body>
-    {% for dag_name, tasks in dags_meta_info.items() %}
-        <h2>{{ dag_name }}</h2>
-        <ul>
-            {% for task in tasks %}
-                <el>{{ task }}<br/></el>
-            {% endfor %}
-        </ul>
+        <h1>Active DAGs: </h1>
+        {% for dag_name, tasks in dags_meta_info.items() %}
+            <h2>{{ dag_name }}</h2>
+            <ul>
+                {% for task in tasks %}
+                    <el>{{ task }}<br/></el>
+                {% endfor %}
+            </ul>
     {% endfor %}
     <br/>
     <button onclick="removeAll()" style="display: inline-block;">Remove all DAGs</button>
