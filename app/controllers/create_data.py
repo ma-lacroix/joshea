@@ -21,11 +21,19 @@ def parse_folder() -> list:
     return os.listdir(folder)
 
 
-def prepare_create_response(dags: list):
+def prepare_create_response(dags: list) -> dict:
     response = {}
     for dag in dags:
         response[dag['name']] = dag['tasks']
     return response
+
+
+def get_list_valid_dags(new_dags: list) -> list:
+    dags_to_add = []
+    for dag in new_dags:
+        if validate_dag(dag):
+            dags_to_add.append(parse_dag_file(dag))
+    return dags_to_add
 
 
 def execute_create() -> json:
@@ -33,10 +41,7 @@ def execute_create() -> json:
     current_dags = parse_folder()
     new_dags = list(set(current_dags) - set(existing_dags))
     if len(new_dags) == 0:
-        return json.dumps("No new DAG")
-    dags_to_add = []
-    for dag in new_dags:
-        if validate_dag(dag):
-            dags_to_add.append(parse_dag_file(dag))
+        return json.dumps({"Nothing new": ''})
+    dags_to_add = get_list_valid_dags(new_dags)
     write_dag_to_db(dags_to_add)
     return prepare_create_response([dag.turn_into_dict() for dag in dags_to_add])

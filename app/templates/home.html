@@ -107,7 +107,7 @@
                 });
                 if (response.ok) {
                     const result = await response.json();
-                    alert('Found these new amazing DAGs! \n' + JSON.stringify(Object.keys(result)));
+                    alert(JSON.stringify(result, null, 2));
                     location.reload();
                 } else {
                     alert('Failed to fetch new DAGs. Status: ' + response.status);
