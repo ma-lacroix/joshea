@@ -26,7 +26,7 @@ def get_meta_data() -> dict:
 def write_meta_data(new_dags_meta_data: dict):
     try:
         with open(f"{values.META_DATA}", 'w') as file:
-            json.dump(new_dags_meta_data, file, indent=4, ensure_ascii=True)
+            json.dump(new_dags_meta_data, file, indent=4, ensure_ascii=True, sort_keys=True)
         file.close()
     except FileNotFoundError:
         raise

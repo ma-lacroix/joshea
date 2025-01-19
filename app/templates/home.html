@@ -105,10 +105,9 @@
                         'Content-Type': 'application/json',
                     }
                 });
-
                 if (response.ok) {
                     const result = await response.json();
-                    alert('Found these new amazing DAGs! \n' + JSON.stringify(result));
+                    alert('Found these new amazing DAGs! \n' + JSON.stringify(Object.keys(result)));
                     location.reload();
                 } else {
                     alert('Failed to fetch new DAGs. Status: ' + response.status);

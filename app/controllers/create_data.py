@@ -21,6 +21,13 @@ def parse_folder() -> list:
     return os.listdir(folder)
 
 
+def prepare_create_response(dags: list):
+    response = {}
+    for dag in dags:
+        response[dag['name']] = dag['tasks']
+    return response
+
+
 def execute_create() -> json:
     existing_dags = fetch_workflow_meta_data()
     current_dags = parse_folder()
@@ -32,4 +39,4 @@ def execute_create() -> json:
         if validate_dag(dag):
             dags_to_add.append(parse_dag_file(dag))
     write_dag_to_db(dags_to_add)
-    return json.dumps([dag.turn_into_dict() for dag in dags_to_add])
+    return prepare_create_response([dag.turn_into_dict() for dag in dags_to_add])
