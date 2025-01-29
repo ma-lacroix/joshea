@@ -1,11 +1,13 @@
 import datetime
 import json
 import os
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from constants import values
+from constants.run_status import RUN_STATUS
 from controllers.validator import validate_dag, parse_dag_file
 from models.run_meta_data import DagRunMetaData
+from models.task_run_meta_data import TaskRunMetaData
 from utils.general_utils import read_configuration, get_json, write_json
 
 
@@ -19,14 +21,20 @@ def write_dag_meta_data_to_db(new_dags_meta_data: list):
 def write_dag_names_run_data_to_db(new_dags_meta_data: list):
     runs_data = get_json(values.RUNS_DATA)
     for dag in new_dags_meta_data:
+        runs_data[dag.name] = {}
+    write_json(runs_data, values.RUNS_DATA)
+
+
+def create_new_dag_run_to_db(new_dags_meta_data: list):
+    runs_data = get_json(values.RUNS_DATA)
+    for dag in new_dags_meta_data:
         runs_data[dag.name] = []
     write_json(runs_data, values.RUNS_DATA)
 
 
-def create_new_dag_run(new_dags_meta_data: list):
+def add_new_dag_run_to_db(dag_run: dict, dag_name: str, id: str):
     runs_data = get_json(values.RUNS_DATA)
-    for dag in new_dags_meta_data:
-        runs_data[dag.name] = []
+    runs_data[dag_name][id] = dag_run
     write_json(runs_data, values.RUNS_DATA)
 
 
@@ -73,9 +81,15 @@ def validate_new_dag_run_request(request_body: dict) -> bool:
 def begin_dag_run(request_body: dict) -> json:
     if not validate_new_dag_run_request(request_body):
         return {"Invalid POST request, missing parameter 'name'"}
-    run = DagRunMetaData(date=datetime.datetime.now().strftime('%Y-%m-%d'),
-                         id=str(UUID),
-                         tasks=[])
-    task_names = get_json(values.META_DATA)['workflows'][request_body.get("name")]
 
-    return {}
+    task_names = get_json(values.META_DATA)['workflows'][request_body.get("name")]
+    tasks = [TaskRunMetaData(name=task,
+                             id=str(uuid4()),
+                             status=RUN_STATUS.PENDING,
+                             total_run_time=0)
+             for task in task_names]
+    run = DagRunMetaData(date=datetime.datetime.now().strftime('%Y-%m-%d'),
+                         status=RUN_STATUS.PENDING,
+                         tasks=tasks)
+    add_new_dag_run_to_db(run.turn_into_dict(), request_body.get("name"), str(uuid4()))
+    return run

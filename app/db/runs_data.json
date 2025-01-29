@@ -1,5 +1,61 @@
 {
-    "dag1.py": [],
-    "dag2.py": [],
-    "dag3.py": []
+    "dag1.py": {
+        "21da661b-6e67-42fd-be8b-99c98c0ae935": {
+            "date": "2025-01-29",
+            "status": "pending",
+            "tasks": [
+                {
+                    "id": "da58923c-8e1d-4850-acad-5b656340ef29",
+                    "name": "get_data",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                {
+                    "id": "5ade5b96-e35e-46b1-a8f9-2f06a0a1f89b",
+                    "name": "process_data",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                {
+                    "id": "0072416c-5e5d-44d8-94b2-269ea444bde4",
+                    "name": "write_to_db",
+                    "status": "pending",
+                    "total_run_time": 0
+                }
+            ]
+        }
+    },
+    "dag2.py": {},
+    "dag3.py": {
+        "590a52ab-0432-4dca-8c0a-857634538e08": {
+            "date": "2025-01-29",
+            "status": "pending",
+            "tasks": [
+                {
+                    "id": "c46b39be-e4f8-4b10-8cb0-5010c114b15d",
+                    "name": "get_data",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                {
+                    "id": "aea1b3a8-506d-4c65-afbf-ff95d8d89899",
+                    "name": "get_more_data",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                {
+                    "id": "8e488100-72b2-43c7-95c8-bac4b4047872",
+                    "name": "get_a_lot_more_data",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                {
+                    "id": "107a1e70-ec96-426a-bacb-898a77107634",
+                    "name": "call_client",
+                    "status": "pending",
+                    "total_run_time": 0
+                }
+            ]
+        }
+    }
 }
