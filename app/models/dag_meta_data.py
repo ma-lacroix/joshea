@@ -1,9 +1,10 @@
+from dataclasses import dataclass
 
+
+@dataclass
 class DagMetaData:
-
-    def __init__(self, name: str, tasks: list):
-        self.name = name
-        self.tasks = tasks
+    name: str
+    tasks: list
 
     def turn_into_dict(self):
         return {'name': self.name, 'tasks': self.tasks}

@@ -14,6 +14,12 @@ def find_new_workflows():
     return jsonify(create_data.execute_create())
 
 
+@app.route('/c/start_new_dag_run', methods=['POST'])
+def start_new_dag_run():
+    dag_info = request.get_json()
+    return jsonify(create_data.begin_dag_run(dag_info))
+
+
 @app.route('/r/meta_data', methods=['GET'])
 def view_meta_data():
     return jsonify(read_data.fetch_meta_data())

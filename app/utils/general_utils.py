@@ -13,9 +13,9 @@ def read_configuration(key: str):
         raise
 
 
-def get_meta_data() -> dict:
+def get_json(file_name: str) -> dict:
     try:
-        with open(f"{values.META_DATA}", 'r') as file:
+        with open(f"{file_name}", 'r') as file:
             meta_data = json.load(file)
         file.close()
         return meta_data
@@ -23,12 +23,10 @@ def get_meta_data() -> dict:
         raise
 
 
-def write_meta_data(new_dags_meta_data: dict):
+def write_json(new_dags_meta_data: dict, file_name: str):
     try:
-        with open(f"{values.META_DATA}", 'w') as file:
+        with open(f"{file_name}", 'w') as file:
             json.dump(new_dags_meta_data, file, indent=4, ensure_ascii=True, sort_keys=True)
         file.close()
     except FileNotFoundError:
         raise
-
-
