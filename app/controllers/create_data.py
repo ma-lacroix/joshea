@@ -1,7 +1,7 @@
 import datetime
 import json
 import os
-from uuid import UUID, uuid4
+from uuid import uuid4
 
 from constants import values
 from constants.run_status import RUN_STATUS

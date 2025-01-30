@@ -4,56 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JoShea Workflows</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: left;
-            margin: 0;
-            padding: 10px;
-            background-color: #f4f4f4;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #f4f4f4;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-        }
-        header img {
-            align-items: center;
-            height: 50px;
-            width: auto;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        main {
-            padding: 2rem;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        ul {
-            text-align: left;
-        }
-        h1 {
-            text-align: left;
-        h2 {
-            text-align: left;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
@@ -64,6 +15,7 @@
         <h1>Active DAGs: </h1>
         {% for dag_name, tasks in dags_meta_info.items() %}
             <h2>{{ dag_name }}</h2>
+            <button onclick="launchDAG('{{ dag_name }}')" style="display: inline-block;">Launch</button>
             <ul>
                 {% for task in tasks %}
                     <el>{{ task }}<br/></el>
@@ -73,51 +25,7 @@
     <br/>
     <button onclick="removeAll()" style="display: inline-block;">Remove all DAGs</button>
     <button onclick="findAllDAGs()" style="display: inline-block;">Find new DAGs</button>
-    <script>
-        async function removeAll() {
-            try {
-                const response = await fetch('/u/remove_all', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-
-                if (response.ok) {
-                    const result = await response.json();
-                    alert('Successfully removed all DAGs: ' + JSON.stringify(result));
-                    location.reload();
-                } else {
-                    alert('Failed to remove. Status: ' + response.status);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred: ' + error.message);
-            }
-        }
-    </script>
-    <script>
-        async function findAllDAGs() {
-            try {
-                const response = await fetch('/c/submit_new', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-                if (response.ok) {
-                    const result = await response.json();
-                    alert(JSON.stringify(result, null, 2));
-                    location.reload();
-                } else {
-                    alert('Failed to fetch new DAGs. Status: ' + response.status);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred: ' + error.message);
-            }
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
 </body>
     <footer style="text-align: center; margin-top: 2rem; font-size: 14px; color: #777;">
         <p>&copy; 2025 M-A Inc.</p>
