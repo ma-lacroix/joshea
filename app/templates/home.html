@@ -18,7 +18,6 @@
                 <h2 style="margin: 0;">{{ dag_name }}</h2>
                 <button class="button button-primary" onclick="launchDAG('{{ dag_name }}')">Launch</button>
             </div>
-
             <ul>
                 {% for task in tasks %}
                     <el>{{ task }}<br/></el>

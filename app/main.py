@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("home.html", dags_meta_info=read_data.fetch_meta_data()['workflows'])
+    return render_template("home.html", dags_meta_info=read_data.fetch_dashboard_data())
 
 
 @app.route('/c/submit_new', methods=['POST'])

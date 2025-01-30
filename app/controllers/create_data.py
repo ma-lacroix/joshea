@@ -25,13 +25,6 @@ def write_dag_names_run_data_to_db(new_dags_meta_data: list):
     write_json(runs_data, values.RUNS_DATA)
 
 
-def create_new_dag_run_to_db(new_dags_meta_data: list):
-    runs_data = get_json(values.RUNS_DATA)
-    for dag in new_dags_meta_data:
-        runs_data[dag.name] = []
-    write_json(runs_data, values.RUNS_DATA)
-
-
 def add_new_dag_run_to_db(dag_run: dict, dag_name: str, id: str):
     runs_data = get_json(values.RUNS_DATA)
     runs_data[dag_name][id] = dag_run
@@ -83,11 +76,11 @@ def begin_dag_run(request_body: dict) -> json:
         return {"Invalid POST request, missing parameter 'name'"}
 
     task_names = get_json(values.META_DATA)['workflows'][request_body.get("name")]
-    tasks = [TaskRunMetaData(name=task,
-                             id=str(uuid4()),
-                             status=RUN_STATUS.PENDING,
-                             total_run_time=0)
-             for task in task_names]
+    tasks = {}
+    for task in task_names:
+        tasks[task] = TaskRunMetaData(id=str(uuid4()),
+                                      status=RUN_STATUS.PENDING,
+                                      total_run_time=0)
     run = DagRunMetaData(date=datetime.datetime.now().strftime('%Y-%m-%d'),
                          status=RUN_STATUS.PENDING,
                          tasks=tasks)

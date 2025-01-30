@@ -1,54 +1,32 @@
 {
-    "dag1.py": {
-        "517da6df-9e64-4c6a-86c3-1e542998438d": {
-            "date": "2025-01-30",
-            "status": "pending",
-            "tasks": [
-                {
-                    "id": "78b37adf-56e0-4260-97ad-e85cc91b9199",
-                    "name": "get_data",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                {
-                    "id": "c2381470-9651-4ea9-8531-df82c3ed44b2",
-                    "name": "process_data",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                {
-                    "id": "0d547c41-dc4e-4f6c-9871-e8bef39abc7f",
-                    "name": "write_to_db",
-                    "status": "pending",
-                    "total_run_time": 0
-                }
-            ]
-        },
-        "994c9e8a-bdd6-49bf-9e92-15fc1a7d3757": {
-            "date": "2025-01-30",
-            "status": "pending",
-            "tasks": [
-                {
-                    "id": "a1e37a3a-6624-4c0f-ba08-6fbf1c19486b",
-                    "name": "get_data",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                {
-                    "id": "b4866c9e-7c97-4a2e-b31f-c43b564f007f",
-                    "name": "process_data",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                {
-                    "id": "fe8e2074-871c-4302-9d54-8ae6049c1890",
-                    "name": "write_to_db",
-                    "status": "pending",
-                    "total_run_time": 0
-                }
-            ]
-        }
-    },
+    "dag1.py": {},
     "dag2.py": {},
-    "dag3.py": {}
+    "dag3.py": {
+        "64bdba83-37bd-4ccd-ae8e-25634f084ee2": {
+            "date": "2025-01-30",
+            "status": "pending",
+            "tasks": {
+                "call_client": {
+                    "id": "bcac5f6a-fa25-484b-8908-18bb7a1f5489",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                "get_a_lot_more_data": {
+                    "id": "d5993c0e-856d-4e4a-997a-d1cef5bcbfec",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                "get_data": {
+                    "id": "66ae6efe-088b-4abd-bb74-e3b51379195c",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                "get_more_data": {
+                    "id": "98a59034-c2f1-4bb7-b577-fdbdec050dc3",
+                    "status": "pending",
+                    "total_run_time": 0
+                }
+            }
+        }
+    }
 }
