@@ -35,8 +35,21 @@ button {
     cursor: pointer;
     border-radius: 3px;
 }
-button:hover {
-    background-color: #0056b3;
+.button-primary {
+    background-color: #046b09;
+    padding: 4px 9px;
+    font-size: 10px;
+    color: white;
+}
+.button-primary:hover {
+    background-color: #9ddb93;
+}
+.button-secondary {
+    background-color: #cf1b1b;
+    color: white;
+}
+.button-secondary:hover {
+    background-color: #d47474;
 }
 ul {
     text-align: left;
