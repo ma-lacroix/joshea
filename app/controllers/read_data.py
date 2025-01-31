@@ -10,7 +10,7 @@ def get_task_statuses(dag_data: dict, task: str, num_last_runs=5) -> list:
     for i, key in enumerate(dag_data.keys()):
         if i == num_last_runs:
             break
-        last_runs[i] = (dag_data[key]['tasks'][task]['status'])
+        last_runs[i] = RUN_STATUS.colors.get(dag_data[key]['tasks'][task]['status'])
     return last_runs
 
 

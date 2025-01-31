@@ -10,7 +10,7 @@ async function launchDAG(dag_name) {
 
         if (response.ok) {
             const result = await response.json();
-            alert('Successfully requested: ' + dag_name + ' ' + JSON.stringify(result));
+            alert('Successfully scheduled a run for: ' + dag_name);
             location.reload();
         } else {
             alert('Failed to submit DAG. Status: ' + response.status);
@@ -31,7 +31,7 @@ async function removeAll() {
 
         if (response.ok) {
             const result = await response.json();
-            alert('Successfully removed all DAGs: ' + JSON.stringify(result));
+            alert('Successfully removed all DAGs! Bye bye: ' + JSON.stringify(result));
             location.reload();
         } else {
             alert('Failed to remove. Status: ' + response.status);
@@ -51,7 +51,7 @@ async function findAllDAGs() {
         });
         if (response.ok) {
             const result = await response.json();
-            alert(JSON.stringify(result, null, 2));
+            alert('Look at all these amazing DAGs!!!: ' + JSON.stringify(result, null, 2));
             location.reload();
         } else {
             alert('Failed to fetch new DAGs. Status: ' + response.status);

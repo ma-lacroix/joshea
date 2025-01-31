@@ -1,6 +1,15 @@
 class RUN_STATUS:
-    RUNNING = "blue"
-    SUCCESS = "green"
-    FAILED = "red"
-    PENDING = "yellow"
-    EMPTY = "grey"
+    # value colors are used by the HTML
+    RUNNING = "running"
+    SUCCESS = "success"
+    FAILED = "failed"
+    PENDING = "pending"
+    EMPTY = "empty"
+    colors = {
+        "running": "blue",
+        "success": "green",
+        "failed": "red",
+        "pending": "yellow",
+        "empty": "light grey"
+    }
+
