@@ -18,17 +18,35 @@
                 <h2 style="margin: 0;">{{ dag_name }}</h2>
                 <button class="button button-primary" onclick="launchDAG('{{ dag_name }}')">Launch</button>
             </div>
-            <ul>
-                {% for task in tasks %}
-                    <el>{{ task }}<br/></el>
+            <br/>
+            <table border="1">
+            <thead>
+                <tr>
+                    <th>Task Name</th> {# Column for Task Names #}
+                    {% for i in range(tasks.values()|first|length) %}
+                        <th>Run {{ i + 1 }}</th> {# Column for Step Numbers #}
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for task_name, statuses in tasks.items() %}
+                    <tr>
+                        <td>{{ task_name }}</td>
+                        {% for status in statuses %}
+                            <td style="background-color: {{ status }}; color: white; padding: 5px;">
+<!--                            <td>{{ status }}</td>-->
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </ul>
-    {% endfor %}
-    <br/>
-    <button class="button button-secondary" onclick="removeAll()" style="display: inline-block;">Remove all DAGs</button>
-    <button class="button button-secondary" onclick="findAllDAGs()" style="display: inline-block;">Find new DAGs</button>
-    <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
-</body>
+            </tbody>
+        </table>
+            <br/>
+        {% endfor %}
+        <br/>
+        <button class="button button-secondary" onclick="removeAll()" style="display: inline-block;">Remove all DAGs</button>
+        <button class="button button-secondary" onclick="findAllDAGs()" style="display: inline-block;">Find new DAGs</button>
+        <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
+    </body>
     <footer style="text-align: center; margin-top: 2rem; font-size: 14px; color: #777;">
         <p>&copy; 2025 M-A Inc.</p>
     </footer>

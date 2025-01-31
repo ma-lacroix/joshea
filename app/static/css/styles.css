@@ -19,9 +19,10 @@ header img {
     height: 50px;
     width: auto;
 }
-header h1 {
+header h1 h2 {
     margin: 0;
     font-size: 24px;
+    text-align: left;
 }
 main {
     padding: 2rem;
@@ -51,11 +52,35 @@ button {
 .button-secondary:hover {
     background-color: #d47474;
 }
-ul {
-    text-align: left;
+table {
+    width: 80%;
+    margin: 9px 0 9px 0;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
 }
-h1 {
-    text-align: left;
-h2 {
-    text-align: left;
+thead {
+    background-color: #007bff;
+    color: white;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 2px solid black;
+    border-bottom: 2px solid #ddd;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+tr:hover {
+    background-color: #d1ecf1;
+    transition: 0.3s;
+}
+th {
+    font-size: 18px;
+}
+td {
+    font-size: 16px;
 }

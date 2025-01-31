@@ -1,12 +1,15 @@
+from constants.run_status import RUN_STATUS
 from utils.general_utils import get_json
 from constants import values
 
 
 def get_task_statuses(dag_data: dict, task: str, num_last_runs=5) -> list:
-    last_runs = [None] * num_last_runs
+    last_runs = [RUN_STATUS.EMPTY] * num_last_runs
     if len(dag_data.keys()) == 0:
         return last_runs
     for i, key in enumerate(dag_data.keys()):
+        if i == num_last_runs:
+            break
         last_runs[i] = (dag_data[key]['tasks'][task]['status'])
     return last_runs
 

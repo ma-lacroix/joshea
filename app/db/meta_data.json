@@ -1,19 +1,3 @@
 {
-    "workflows": {
-        "dag1.py": [
-            "get_data",
-            "process_data",
-            "write_to_db"
-        ],
-        "dag2.py": [
-            "read_data",
-            "send_email"
-        ],
-        "dag3.py": [
-            "get_data",
-            "get_more_data",
-            "get_a_lot_more_data",
-            "call_client"
-        ]
-    }
+    "workflows": {}
 }

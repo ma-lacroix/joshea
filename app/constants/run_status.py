@@ -1,5 +1,6 @@
 class RUN_STATUS:
-    RUNNING = "running"
-    SUCCESS = "success"
-    FAILED = "failed"
-    PENDING = "pending"
+    RUNNING = "blue"
+    SUCCESS = "green"
+    FAILED = "red"
+    PENDING = "yellow"
+    EMPTY = "grey"
