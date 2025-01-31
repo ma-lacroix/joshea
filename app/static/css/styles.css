@@ -53,7 +53,6 @@ button {
     background-color: #d47474;
 }
 table {
-    width: 80%;
     margin: 9px 0 9px 0;
     border-collapse: collapse;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -74,13 +73,18 @@ th, td {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-tr:hover {
-    background-color: #d1ecf1;
-    transition: 0.3s;
-}
 th {
-    font-size: 18px;
+    font-size: 11px;
 }
 td {
-    font-size: 16px;
+    font-size: 10px;
+}
+.custom-cell {
+    color: white;
+    padding: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;  /* Smooth transition */
+}
+.custom-cell:hover {
+    background-color: white !important;  /* Ensure hover color takes precedence */
+    color: white !important;  /* Optional: change text color on hover */
 }

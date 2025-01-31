@@ -16,13 +16,13 @@
         {% for dag_name, tasks in dags_meta_info.items() %}
             <div style="display: flex; align-items: center; gap: 10px;">
                 <h2 style="margin: 0;">{{ dag_name }}</h2>
-                <button class="button button-primary" onclick="launchDAG('{{ dag_name }}')">Launch</button>
+                <button class="button button-primary" onclick="launchDAG('{{ dag_name }}')">Schedule run</button>
             </div>
             <br/>
             <table border="1">
             <thead>
                 <tr>
-                    <th>Task Name</th> {# Column for Task Names #}
+                    <th>Run queue</th> {# Column for Task Names #}
                     {% for i in range(tasks.values()|first|length) %}
                         <th>Run {{ i + 1 }}</th> {# Column for Step Numbers #}
                     {% endfor %}
@@ -33,8 +33,7 @@
                     <tr>
                         <td>{{ task_name }}</td>
                         {% for status in statuses %}
-                            <td style="background-color: {{ status }}; color: white; padding: 5px;">
-<!--                            <td>{{ status }}</td>-->
+                        <td class="custom-cell" style="background-color: {{ status }}; color: white; padding: 5px;"></td>
                         {% endfor %}
                     </tr>
                 {% endfor %}

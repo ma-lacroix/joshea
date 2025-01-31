@@ -1,1 +1,139 @@
-{}
+{
+    "dag1.py": {
+        "4a88a8ae-ef5e-4e1e-9a5c-3228561e7846": {
+            "date": "2025-01-31",
+            "status": "yellow",
+            "tasks": {
+                "get_data": {
+                    "id": "aeac6aa1-db92-4d25-a170-2acd7747c2c2",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "process_data": {
+                    "id": "1befb1d5-8b79-4111-a48b-a62db25fa971",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "write_to_db": {
+                    "id": "fae817ed-c13b-4e0d-af12-48a09aab6d94",
+                    "status": "yellow",
+                    "total_run_time": 0
+                }
+            }
+        },
+        "7c8caf52-55bd-4c10-980a-35b2e2e8b3d1": {
+            "date": "2025-01-31",
+            "status": "yellow",
+            "tasks": {
+                "get_data": {
+                    "id": "c564e1ed-a620-4a4e-beea-f93aced9a2fd",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "process_data": {
+                    "id": "e760efd5-d7b3-4979-8d57-8cb0a9ea7864",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "write_to_db": {
+                    "id": "4becfc3d-f4db-43ef-8119-cb100583c80c",
+                    "status": "yellow",
+                    "total_run_time": 0
+                }
+            }
+        },
+        "f831f14f-926b-42f0-9f64-e3c871cf726f": {
+            "date": "2025-01-31",
+            "status": "yellow",
+            "tasks": {
+                "get_data": {
+                    "id": "14541bc3-1303-4b53-b7a8-4cb882a8112c",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "process_data": {
+                    "id": "426e0638-3d9f-4fe0-9a5e-1f8d56797dda",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "write_to_db": {
+                    "id": "e1239b3a-1318-4661-9da5-83de65854c56",
+                    "status": "yellow",
+                    "total_run_time": 0
+                }
+            }
+        },
+        "ffad6f72-0736-4896-a8c7-b0e856b41830": {
+            "date": "2025-01-31",
+            "status": "yellow",
+            "tasks": {
+                "get_data": {
+                    "id": "424e38c1-c0da-4553-a6c5-52a47c8cec9d",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "process_data": {
+                    "id": "c336e601-9528-4607-8914-8f4bcce85fae",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "write_to_db": {
+                    "id": "fccfe12b-b66a-4f0f-b6f9-14ed51a12a48",
+                    "status": "yellow",
+                    "total_run_time": 0
+                }
+            }
+        }
+    },
+    "dag2.py": {
+        "0d22232d-b06a-4ca6-9e50-98b5c77fcb75": {
+            "date": "2025-01-31",
+            "status": "yellow",
+            "tasks": {
+                "read_data": {
+                    "id": "365d6aea-43b2-4a33-bd52-9513d1087621",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "send_email": {
+                    "id": "9f432147-216a-431e-a89c-eb11896d5fd6",
+                    "status": "yellow",
+                    "total_run_time": 0
+                }
+            }
+        },
+        "2697e602-265e-47b6-b0d5-3061a538016d": {
+            "date": "2025-01-31",
+            "status": "yellow",
+            "tasks": {
+                "read_data": {
+                    "id": "1bb4750f-0e83-4eb8-a836-34747bc4b5c1",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "send_email": {
+                    "id": "c4404972-9173-4e60-8489-7721acea7c99",
+                    "status": "yellow",
+                    "total_run_time": 0
+                }
+            }
+        },
+        "bf769b9f-92f7-4771-a756-a18130434c32": {
+            "date": "2025-01-31",
+            "status": "yellow",
+            "tasks": {
+                "read_data": {
+                    "id": "4c254bc2-6b4f-4003-82d0-36afb1d0245b",
+                    "status": "yellow",
+                    "total_run_time": 0
+                },
+                "send_email": {
+                    "id": "16573bd8-12f8-4a4f-8c41-9b0215ae8bf9",
+                    "status": "yellow",
+                    "total_run_time": 0
+                }
+            }
+        }
+    },
+    "dag3.py": {}
+}
