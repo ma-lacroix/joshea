@@ -1,6 +1,6 @@
 async function launchDAG(dag_name) {
     try {
-        const response = await fetch('/c/start_new_dag_run', {
+        const response = await fetch('/c/schedule_dag_run', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ async function launchDAG(dag_name) {
 }
 async function removeAll() {
     try {
-        const response = await fetch('/u/remove_all', {
+        const response = await fetch('/d/remove_all', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

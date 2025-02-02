@@ -3,15 +3,19 @@ from utils.general_utils import get_json
 from constants import values
 
 
-def get_task_statuses(dag_data: dict, task: str, num_last_runs=5) -> list:
-    last_runs = [RUN_STATUS.EMPTY] * num_last_runs
+def get_task_statuses(dag_data: dict, task: str) -> list:
+    last_runs = [RUN_STATUS.EMPTY] * values.RUNS_DISPLAY_NUM
     if len(dag_data.keys()) == 0:
         return last_runs
     for i, key in enumerate(dag_data.keys()):
-        if i == num_last_runs:
+        if i == values.RUNS_DISPLAY_NUM:
             break
         last_runs[i] = RUN_STATUS.colors.get(dag_data[key]['tasks'][task]['status'])
     return last_runs
+
+
+def sort_runs_by_scheduled_date() -> list:
+    pass
 
 
 def merge_data(meta_data: dict, dag_runs: dict) -> dict:

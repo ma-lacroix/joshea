@@ -71,7 +71,7 @@ def validate_new_dag_run_request(request_body: dict) -> bool:
     return request_body.get("name", "_") in fetch_workflow_meta_data()
 
 
-def begin_dag_run(request_body: dict) -> json:
+def schedule_dag_run(request_body: dict) -> json:
     if not validate_new_dag_run_request(request_body):
         return {"Invalid POST request, missing parameter 'name'"}
 
@@ -81,7 +81,7 @@ def begin_dag_run(request_body: dict) -> json:
         tasks[task] = TaskRunMetaData(id=str(uuid4()),
                                       status=RUN_STATUS.PENDING,
                                       total_run_time=0)
-    run = DagRunMetaData(date=datetime.datetime.now().strftime('%Y-%m-%d'),
+    run = DagRunMetaData(date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                          status=RUN_STATUS.PENDING,
                          tasks=tasks)
     add_new_dag_run_to_db(run.turn_into_dict(), request_body.get("name"), str(uuid4()))
