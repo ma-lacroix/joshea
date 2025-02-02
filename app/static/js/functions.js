@@ -61,3 +61,30 @@ async function findAllDAGs() {
         alert('An error occurred: ' + error.message);
     }
 }
+async function handleNextDagRun(dag_name) {
+    try {
+        const response = await fetch(`/r/get_next_dag_run?name=${encodeURIComponent(dag_name)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (response.ok) {
+            const result = await response.json(); // Convert response to JSON
+            alert('Starting: ' + JSON.stringify(result, null, 2));
+            const runResponse = await fetch('/u/execute_dag', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ dag_name: result.dag_name, id: result.next_run }) // Ensure correct field is used
+            });
+        } else {
+            alert(`Failed to fetch next DAG run: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`An error occurred: ${error.message}`);
+    }
+}

@@ -9,6 +9,12 @@ def home():
     return render_template("home.html", dags_meta_info=read_data.fetch_dashboard_data())
 
 
+@app.route("/r/get_next_dag_run", methods=['GET'])
+def get_next_dag_run():
+    dag_name = request.args.get('name')
+    return read_data.fetch_next_run(dag_name)
+
+
 @app.route('/c/submit_new', methods=['POST'])
 def find_new_workflows():
     return jsonify(create_data.execute_create())
