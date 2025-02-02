@@ -17,6 +17,7 @@
             <div style="display: flex; align-items: center; gap: 10px;">
                 <h2 style="margin: 0;">{{ dag_name }}</h2>
                 <button class="button button-primary" onclick="launchDAG('{{ dag_name }}')">Schedule run</button>
+                <button class="button button-primary" onclick="handleNextDagRun('{{ dag_name }}')">Trigger next run</button>
             </div>
             <br/>
             <table border="1">
