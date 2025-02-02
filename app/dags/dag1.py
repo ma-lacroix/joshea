@@ -1,15 +1,15 @@
 # example DAG one
 
 def get_data():
-    pass
+    print("get_data()")
 
 
 def process_data():
-    pass
+    print("process_data()")
 
 
 def write_to_db():
-    pass
+    print("write_to_db()")
 
 
 # _tasks_

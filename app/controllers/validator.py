@@ -4,7 +4,10 @@ from models.dag_meta_data import DagMetaData
 
 
 def validate_dag(dag: str) -> bool:
-    return True
+    """
+    Validates the Python files used to run DAGs
+    """
+    return re.match(r'^.*\.py$', dag.lower().strip())
 
 
 def parse_dag_file(dag: str) -> DagMetaData:
@@ -13,5 +16,5 @@ def parse_dag_file(dag: str) -> DagMetaData:
         lines = file.readlines()
         for i, line in enumerate(lines):
             if line.strip() == "# _tasks_":
-                tasks = re.sub(r'\([^)]*\)', '', lines[i + 1].replace('#', '').strip()).split(">>")
+                tasks = re.sub(r'\([^)]*\)', '', lines[i + 1].strip().replace('#', '')).split(">>")
     return DagMetaData(dag, [task.replace(' ', '') for task in tasks])

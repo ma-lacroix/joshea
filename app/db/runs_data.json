@@ -1,5 +1,58 @@
 {
     "dag1.py": {},
     "dag2.py": {},
-    "dag3.py": {}
+    "dag3.py": {
+        "a7963130-a0ec-435e-98f6-67883c8cd18f": {
+            "date": "2025-02-02",
+            "status": "pending",
+            "tasks": {
+                "call_client": {
+                    "id": "75837472-e702-4aad-ae55-d9ce93008e90",
+                    "status": "success",
+                    "total_run_time": 0
+                },
+                "get_a_lot_more_data": {
+                    "id": "cc75c54d-27fc-4909-a050-e208dff2f142",
+                    "status": "success",
+                    "total_run_time": 0
+                },
+                "get_data": {
+                    "id": "2a3d5bd3-0ad3-45e5-851b-323e71630e24",
+                    "status": "success",
+                    "total_run_time": 0
+                },
+                "get_more_data": {
+                    "id": "6b006a33-82dc-4a4f-b544-533493edd2ba",
+                    "status": "success",
+                    "total_run_time": 0
+                }
+            }
+        },
+        "d928db8e-f2b8-484a-ac55-04e5528aecae": {
+            "date": "2025-02-02",
+            "status": "pending",
+            "tasks": {
+                "call_client": {
+                    "id": "94845808-8f79-4746-b67f-945fe7393297",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                "get_a_lot_more_data": {
+                    "id": "79c21bcf-2691-4fe4-b5a8-ddd5a70a14c4",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                "get_data": {
+                    "id": "9aa233c7-79ce-4cc6-a26b-6a2d40ce4547",
+                    "status": "pending",
+                    "total_run_time": 0
+                },
+                "get_more_data": {
+                    "id": "6befb7fa-65ff-4277-a7bf-1b0a134d4697",
+                    "status": "pending",
+                    "total_run_time": 0
+                }
+            }
+        }
+    }
 }

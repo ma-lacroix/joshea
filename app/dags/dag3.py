@@ -1,19 +1,19 @@
 # example DAG one
 
 def get_data():
-    pass
+    print("get_data()")
 
 
 def get_more_data():
-    pass
+    print("get_more_data()")
 
 
 def get_a_lot_more_data():
-    pass
+    print("get_a_lot_more_data()")
 
 
 def call_client():
-    pass
+    print("get_call_client()")
 
 # _tasks_
-get_data() >> get_more_data() >> get_a_lot_more_data() >> call_client()
+# get_data() >> get_more_data() >> get_a_lot_more_data() >> call_client()

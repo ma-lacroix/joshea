@@ -20,7 +20,6 @@ def merge_data(meta_data: dict, dag_runs: dict) -> dict:
         displayed_data[key] = {}
         for task in meta_data[key]:
             displayed_data[key][task] = get_task_statuses(dag_runs[key], task)
-    print(displayed_data)
     return displayed_data
 
 

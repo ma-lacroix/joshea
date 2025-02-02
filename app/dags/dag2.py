@@ -1,12 +1,12 @@
 # example DAG two
 
 def read_data():
-    pass
+    print("Read_data")
 
 
 def send_email():
-    pass
+    print("Send email")
 
 
 # _tasks_
-read_data() >> send_email()
+# read_data() >> send_email()
