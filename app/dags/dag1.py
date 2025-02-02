@@ -13,4 +13,4 @@ def write_to_db():
 
 
 # _tasks_
-get_data() >> process_data() >> write_to_db()
+# get_data() >> process_data() >> write_to_db()

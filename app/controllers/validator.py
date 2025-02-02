@@ -13,5 +13,5 @@ def parse_dag_file(dag: str) -> DagMetaData:
         lines = file.readlines()
         for i, line in enumerate(lines):
             if line.strip() == "# _tasks_":
-                tasks = re.sub(r'\([^)]*\)', '', lines[i + 1].strip()).split(">>")
+                tasks = re.sub(r'\([^)]*\)', '', lines[i + 1].replace('#', '').strip()).split(">>")
     return DagMetaData(dag, [task.replace(' ', '') for task in tasks])
