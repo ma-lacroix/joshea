@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template
-from controllers import read_data, create_data, update_data
+from controllers import read_data, create_data, update_data, delete_data
 
 app = Flask(__name__)
 
@@ -31,9 +31,9 @@ def view_meta_data():
     return jsonify(read_data.fetch_meta_data())
 
 
-@app.route('/u/remove_all', methods=['POST'])
+@app.route('/d/remove_all', methods=['POST'])
 def reset_meta_data():
-    return jsonify(update_data.flush_meta_data())
+    return jsonify(delete_data.flush_meta_data())
 
 
 @app.route('/u/update_existing', methods=['POST'])
