@@ -1,6 +1,6 @@
 import json
 
-from constants import values
+from app.constants import values
 
 
 def read_configuration(key: str):

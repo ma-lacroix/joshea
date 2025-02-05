@@ -3,12 +3,12 @@ import json
 import os
 from uuid import uuid4
 
-from constants import values
-from constants.run_status import RUN_STATUS
-from controllers.validator import validate_dag, parse_dag_file
-from models.run_meta_data import DagRunMetaData
-from models.task_run_meta_data import TaskRunMetaData
-from utils.general_utils import read_configuration, get_json, write_json
+from app.constants import values
+from app.constants.run_status import RUN_STATUS
+from app.controllers.validator import validate_dag, parse_dag_file
+from app.models.run_meta_data import DagRunMetaData
+from app.models.task_run_meta_data import TaskRunMetaData
+from app.utils.general_utils import read_configuration, get_json, write_json
 
 
 def write_dag_meta_data_to_db(new_dags_meta_data: list):

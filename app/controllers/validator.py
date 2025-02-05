@@ -1,6 +1,6 @@
 import re
 
-from models.dag_meta_data import DagMetaData
+from app.models.dag_meta_data import DagMetaData
 
 
 def validate_dag(dag: str) -> bool:

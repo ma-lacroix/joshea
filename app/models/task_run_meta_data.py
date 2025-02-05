@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from constants.run_status import RUN_STATUS
+from app.constants.run_status import RUN_STATUS
 
 
 @dataclass

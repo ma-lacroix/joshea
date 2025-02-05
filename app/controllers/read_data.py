@@ -1,6 +1,6 @@
-from constants.run_status import RUN_STATUS
-from utils.general_utils import get_json
-from constants import values
+from app.constants.run_status import RUN_STATUS
+from app.utils.general_utils import get_json
+from app.constants import values
 
 
 def get_task_statuses(dag_data: list, task: str) -> list:

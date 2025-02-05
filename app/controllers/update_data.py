@@ -2,9 +2,9 @@ import datetime
 import importlib
 from time import sleep
 
-from constants.run_status import RUN_STATUS
-from utils.general_utils import write_json, get_json
-from constants import values
+from app.constants.run_status import RUN_STATUS
+from app.utils.general_utils import write_json, get_json
+from app.constants import values
 
 
 def fetch_workflow_task_names(dag_name: str) -> list:

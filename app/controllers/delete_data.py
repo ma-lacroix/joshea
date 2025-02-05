@@ -1,5 +1,5 @@
-from constants import values
-from utils.general_utils import write_json
+from app.constants import values
+from app.utils.general_utils import write_json
 
 
 def flush_meta_data() -> str:
