@@ -33,6 +33,7 @@ jobs:
         pytest --cov=app --cov-report=xml:coverage.xml --cov-report=term 
     - name: Extract coverage percentage
       run: |
+        pip install xmlstarlet
         COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f%%", $1 * 100}')
         echo "Test Coverage: $COVERAGE" > coverage.txt
         echo "📊 Coverage: $COVERAGE"   
