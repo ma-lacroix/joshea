@@ -1,9 +1,11 @@
-name: Python package
+name: Package validation
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
