@@ -1,23 +1,16 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
 name: Python package
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.9", "3.10", "3.11"]
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
@@ -37,26 +30,25 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest --cov=app --cov-report=xml:coverage.xml --cov-report=term
-    - name: Upload coverage report
-      uses: codecov/codecov-action@v3
-      with:
-        file: ./coverage.xml
-
-    - name: Generate coverage badge
+        pytest --cov=your_project --cov-report=xml:coverage.xml --cov-report=term 
+    - name: Extract coverage percentage
       run: |
-        pip install genbadge[coverage]
-        if [ -f coverage.xml ]; then
-          genbadge coverage -i coverage.xml -o coverage-badge.svg
-        else
-          echo "❌ ERROR: coverage.xml not found!"
-          exit 1
-        fi
-    - name: Commit and push coverage badge
+        pip install xmlstarlet  # Install XML processing tool
+        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f%%", $1 * 100}')
+        echo "Test Coverage: $COVERAGE" > coverage.txt
+        echo "📊 Coverage: $COVERAGE"   
+    - name: Commit and push coverage file
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add coverage-badge.svg
-        git diff --quiet && echo "No changes to commit" || (git commit -m "Update coverage badge" && git push)
+        git add coverage.txt
+        git diff --quiet && echo "No changes to commit" || (git commit -m "Update test coverage" && git push)
+    - name: Update README with coverage
+      run: |
+        pip install xmlstarlet
+        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f%%", $1 * 100}')
+        sed -i "s/^📊 Coverage:.*/📊 Coverage: $COVERAGE/" README.md
+        git add README.md
+        git diff --quiet && echo "No changes to commit" || (git commit -m "Update coverage in README" && git push)
