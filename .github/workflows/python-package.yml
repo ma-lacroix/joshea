@@ -37,8 +37,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest --cov=your_project --cov-report=xml
-
+        pytest --cov=your_project --cov-report=xml:coverage.xml --cov-report=term
     - name: Upload coverage report (Optional)
       uses: codecov/codecov-action@v3
       with:
@@ -47,11 +46,15 @@ jobs:
     - name: Generate coverage badge
       run: |
         pip install genbadge[coverage]
-        genbadge coverage -i coverage.xml -o coverage-badge.svg
-
+        if [ -f coverage.xml ]; then
+          genbadge coverage -i coverage.xml -o coverage-badge.svg
+        else
+          echo "❌ ERROR: coverage.xml not found!"
+          exit 1
+        fi
     - name: Commit and push coverage badge
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for push access
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
