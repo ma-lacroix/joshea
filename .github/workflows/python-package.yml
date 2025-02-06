@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.9"]
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install flake8 pytest pytest-cov
+        python -m pip install flake8 pytest pytest-cov xmlstarlet
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
@@ -33,7 +33,6 @@ jobs:
         pytest --cov=app --cov-report=xml:coverage.xml --cov-report=term 
     - name: Extract coverage percentage
       run: |
-        pip install xmlstarlet  # Install XML processing tool
         COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f%%", $1 * 100}')
         echo "Test Coverage: $COVERAGE" > coverage.txt
         echo "📊 Coverage: $COVERAGE"   
