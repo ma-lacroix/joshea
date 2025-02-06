@@ -53,7 +53,7 @@ jobs:
         git commit -m "Update test coverage" && git push
     - name: Update README with coverage
       run: |
-        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f%%", $1 * 100}')
+        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.txt | awk '{printf "%.2f%%", $1 * 100}')
         sed -i "s/^📊 Coverage:.*/📊 Coverage: $COVERAGE/" README.md
         git add README.md
         git diff --quiet && echo "No changes to commit" || (git commit -m "Update coverage in README" && git push)
