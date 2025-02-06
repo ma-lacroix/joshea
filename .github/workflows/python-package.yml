@@ -30,7 +30,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest --cov=your_project --cov-report=xml:coverage.xml --cov-report=term 
+        pytest --cov=app --cov-report=xml:coverage.xml --cov-report=term 
     - name: Extract coverage percentage
       run: |
         pip install xmlstarlet  # Install XML processing tool
