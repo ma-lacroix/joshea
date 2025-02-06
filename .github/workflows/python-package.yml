@@ -52,3 +52,8 @@ jobs:
         sed -i "s/^📊 Coverage:.*/📊 Coverage: $COVERAGE/" README.md
         git add README.md
         git commit -m "Update coverage in README" && git push
+    - name: Delete coverage files and commit changes
+      run: |
+        rm -f coverage.xml  # Delete the coverage files
+        git add coverage.xml  # Stage the deletions
+        git commit -m "Delete coverage file" && git push
