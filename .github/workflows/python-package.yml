@@ -41,6 +41,10 @@ jobs:
         COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f%%", $1 * 100}')
         echo "Test Coverage: $COVERAGE" > coverage.txt
         echo "📊 Coverage: $COVERAGE"   
+    - name: List files to check coverage.txt existence
+      run: |
+        pwd
+        ls -l
     - name: Commit and push coverage file
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
