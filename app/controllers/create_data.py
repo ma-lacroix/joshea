@@ -60,7 +60,7 @@ def execute_create() -> json:
     current_dags = parse_folder()
     new_dags = list(set(current_dags) - set(existing_dags))
     if len(new_dags) == 0:
-        return json.dumps({"Nothing new": ''})
+        return {"message": 'nothing new'}
     dags_to_add = get_list_valid_dags(new_dags)
     write_dag_meta_data_to_db(dags_to_add)
     write_dag_names_run_data_to_db(dags_to_add)
