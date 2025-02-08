@@ -1,3 +1,3 @@
 {
-  "dag_files_location": "dags/"
+  "dag_files_location": "app/dags/"
 }

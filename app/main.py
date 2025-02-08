@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template
-from controllers import read_data, create_data, update_data, delete_data
+from app.controllers import read_data, create_data, update_data, delete_data
 
 app = Flask(__name__)
 

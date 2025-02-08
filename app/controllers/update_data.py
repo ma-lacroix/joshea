@@ -48,7 +48,7 @@ def execute_dag(dag_name: str, id: str) -> dict:
 
 
 def execute_dag_task(dag_name: str, task_name: str) -> None:
-    module = importlib.import_module(f"dags.{dag_name.replace('.py','')}")
+    module = importlib.import_module(f"app.dags.{dag_name.replace('.py','')}")
     func = getattr(module, task_name)
     func()
 
