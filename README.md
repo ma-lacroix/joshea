@@ -1,4 +1,4 @@
-📊 Coverage: 35.37%
+📊 Coverage: 39.43%
 
 ## Jo_shea data workflow handler
 
