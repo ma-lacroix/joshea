@@ -33,11 +33,16 @@ class TestCreateData(unittest.TestCase):
     @patch('app.controllers.create_data.write_dag_meta_data_to_db', return_value=None)
     @patch('app.controllers.create_data.write_dag_names_run_data_to_db', return_value=None)
     @patch('app.controllers.create_data.validate_dag', return_value=False)
-    @patch('app.controllers.create_data.parse_dag_file', return_value=DagMetaData('dag', ['task1', 'task2']))
+    @patch('app.controllers.create_data.get_list_valid_dags', return_value=[DagMetaData('dag', ['task1', 'task2'])])
     def test_execute_create_pass(self, mock_fetch_workflow_meta_data, mock_parse_folder,
                                  mock_write_dag_meta_data_to_db, mock_write_dag_names_run_data_to_db,
                                  mock_parse_dag_file, mock_validate_dag):
-        self.assertEqual(0, len(create_data.execute_create()))
+        self.assertEqual(1, len(create_data.execute_create()))
+
+    @patch('app.controllers.create_data.fetch_workflow_meta_data', return_value=['dd1', 'dd2'])
+    @patch('app.controllers.create_data.parse_folder', return_value=['dd1', 'dd2'])
+    def test_execute_create_fail(self, mock_fetch_workflow_meta_data, mock_parse_folder):
+        self.assertEqual({"message": 'nothing new'}, create_data.execute_create())
 
     @patch('app.controllers.create_data.fetch_workflow_meta_data', return_value=['dd1', 'dd2'])
     @patch('app.controllers.create_data.parse_folder', return_value=['dd1', 'dd2'])
