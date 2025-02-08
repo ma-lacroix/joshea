@@ -10,5 +10,9 @@ class TestDeleteData(unittest.TestCase):
         pass
 
     @patch('app.controllers.delete_data.write_json', return_value=None)
-    def test_flush_meta_data(self, mock_write_json):
+    def test_flush_meta_data_pass(self, mock_write_json):
         self.assertEqual("Meta data reset", delete_data.flush_meta_data())
+
+    @patch('app.controllers.delete_data.write_json', side_effect=FileNotFoundError)
+    def test_flush_meta_data_fail(self, mock_write_json):
+        self.assertEqual("Failed to delete data!", delete_data.flush_meta_data())
