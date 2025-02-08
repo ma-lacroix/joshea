@@ -73,7 +73,7 @@ def validate_new_dag_run_request(request_body: dict) -> bool:
 
 def schedule_dag_run(request_body: dict) -> json:
     if not validate_new_dag_run_request(request_body):
-        return {"Invalid POST request, missing parameter 'name'"}
+        return {f"Invalid POST request, missing key {request_body.get('name', '_')}"}
     task_names = get_json(values.META_DATA)['workflows'][request_body.get("name")]
     tasks = {}
     for task in task_names:

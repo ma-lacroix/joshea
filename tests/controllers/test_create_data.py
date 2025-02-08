@@ -44,13 +44,16 @@ class TestCreateData(unittest.TestCase):
     def test_execute_create_fail(self, mock_fetch_workflow_meta_data, mock_parse_folder):
         self.assertEqual("nothing new", create_data.execute_create().get("message"))
 
-# def execute_create() -> json:
-#     existing_dags = fetch_workflow_meta_data()
-#     current_dags = parse_folder()
-#     new_dags = list(set(current_dags) - set(existing_dags))
-#     if len(new_dags) == 0:
-#         return json.dumps({"Nothing new": ''})
-#     dags_to_add = get_list_valid_dags(new_dags)
-#     write_dag_meta_data_to_db(dags_to_add)
-#     write_dag_names_run_data_to_db(dags_to_add)
-#     return prepare_create_response([dag.turn_into_dict() for dag in dags_to_add])
+    @patch('app.controllers.create_data.fetch_workflow_meta_data', return_value=['dd1.py', 'dd2.py'])
+    @patch('app.controllers.create_data.get_json', return_value={"workflows":
+                                                                     {"dd1.py":
+                                                                          ["get_data", "process_data", "write_to_db"]}})
+    @patch('app.controllers.create_data.add_new_dag_run_to_db', return_value=None)
+    def test_schedule_dag_run_pass(self, mock_fetch_workflow_meta_data, mock_get_json, mock_add_new_dag_run_to_db):
+        data = create_data.schedule_dag_run({"name": 'dd1.py'})
+        self.assertEqual("pending", data.status)
+
+    @patch('app.controllers.create_data.fetch_workflow_meta_data', return_value=['dd1.py', 'dd2.py'])
+    def test_schedule_dag_run_fail(self, mock_fetch_workflow_meta_data):
+        data = create_data.schedule_dag_run({"name": 'bad_key'})
+        self.assertEqual({'Invalid POST request, missing key bad_key'}, data)
