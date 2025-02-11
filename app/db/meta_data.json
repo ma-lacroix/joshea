@@ -14,6 +14,9 @@
             "get_more_data",
             "get_a_lot_more_data",
             "call_client"
+        ],
+        "dag4.py": [
+            "get_data"
         ]
     }
 }

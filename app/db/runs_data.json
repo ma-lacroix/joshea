@@ -1,77 +1,47 @@
 {
     "dag1.py": {
-        "2025-02-08 21:01:01": {
+        "2025-02-11 10:35:11": {
             "status": "success",
             "tasks": {
                 "get_data": {
-                    "id": "d88e6d3f-4628-4caa-b57d-81e8cc0baeac",
+                    "id": "60632d11-3d9c-4583-97e6-ecf99c1bb399",
                     "status": "success",
                     "total_run_time": 0
                 },
                 "process_data": {
-                    "id": "de7be88e-87c6-4ae4-9a0f-9d7cb5a60c51",
+                    "id": "23bf2eed-183d-48cc-8287-846cb938a501",
                     "status": "success",
                     "total_run_time": 0
                 },
                 "write_to_db": {
-                    "id": "76f2e63b-9d28-4cad-bbb3-07424847e9a4",
+                    "id": "bfb7d265-6564-4513-9505-4a6dca9da9d6",
                     "status": "success",
                     "total_run_time": 0
                 }
             }
         },
-        "2025-02-08 21:01:04": {
+        "2025-02-11 10:35:13": {
             "status": "pending",
             "tasks": {
                 "get_data": {
-                    "id": "4f954481-b890-4204-a368-e64244b54eca",
+                    "id": "c3dab8f5-e418-4a22-9e44-eb21b9177dbe",
                     "status": "pending",
                     "total_run_time": 0
                 },
                 "process_data": {
-                    "id": "4cce7863-9b8c-467b-a07e-adecafb5a182",
+                    "id": "db08ef1f-5d5c-4297-8558-aecafc2b6f26",
                     "status": "pending",
                     "total_run_time": 0
                 },
                 "write_to_db": {
-                    "id": "a8675638-c675-4134-b3c2-ff429aa92a2b",
+                    "id": "1e6ccc79-37f1-4a46-a37d-66ccd2d502b3",
                     "status": "pending",
                     "total_run_time": 0
                 }
             }
         }
     },
-    "dag2.py": {
-        "2025-02-08 21:01:07": {
-            "status": "failed",
-            "tasks": {
-                "read_data": {
-                    "id": "d123c735-8ade-4840-a393-7349fb3f687f",
-                    "status": "failed",
-                    "total_run_time": 0
-                },
-                "send_email": {
-                    "id": "7444fb0b-b590-4526-8eee-7e2c8c8d28e9",
-                    "status": "pending",
-                    "total_run_time": 0
-                }
-            }
-        },
-        "2025-02-08 21:03:37": {
-            "status": "success",
-            "tasks": {
-                "read_data": {
-                    "id": "7e250397-05c3-40c2-8870-e55c1ec8a7e5",
-                    "status": "success",
-                    "total_run_time": 0
-                },
-                "send_email": {
-                    "id": "f3591256-85a8-40f1-8a78-660650ee509d",
-                    "status": "success",
-                    "total_run_time": 0
-                }
-            }
-        }
-    },
-    "dag3.py": {}
+    "dag2.py": {},
+    "dag3.py": {},
+    "dag4.py": {}
 }

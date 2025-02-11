@@ -12,7 +12,7 @@ def validate_dag(dag: str) -> bool:
 
 def parse_dag_file(dag: str) -> DagMetaData:
     tasks = []
-    with open(f"dags/{dag}", 'r') as file:
+    with open(f"app/dags/{dag}", 'r') as file:
         lines = file.readlines()
         for i, line in enumerate(lines):
             if line.strip() == "# _tasks_":
