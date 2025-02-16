@@ -7,7 +7,7 @@ def validate_dag(dag: str) -> bool:
     """
     Validates the Python files used to run DAGs
     """
-    return re.match(r'^.*\.py$', dag.lower().strip())
+    return bool(re.match(r'^.*\.py$', dag.lower().strip()))
 
 
 def parse_dag_file(dag: str) -> DagMetaData:

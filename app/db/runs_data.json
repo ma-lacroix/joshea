@@ -1,63 +1,47 @@
 {
     "dag1.py": {
-        "2025-02-11 10:35:11": {
-            "status": "success",
+        "2025-02-16 14:07:24": {
+            "status": "pending",
             "tasks": {
                 "get_data": {
-                    "id": "60632d11-3d9c-4583-97e6-ecf99c1bb399",
-                    "status": "success",
+                    "id": "62c3aa34-2045-4657-9011-2b6fc0849787",
+                    "status": "pending",
                     "total_run_time": 0
                 },
                 "process_data": {
-                    "id": "23bf2eed-183d-48cc-8287-846cb938a501",
-                    "status": "success",
+                    "id": "22627a45-a72a-4c5e-b078-7dc1f9250a31",
+                    "status": "pending",
                     "total_run_time": 0
                 },
                 "write_to_db": {
-                    "id": "bfb7d265-6564-4513-9505-4a6dca9da9d6",
-                    "status": "success",
+                    "id": "efc519c1-7aa4-4f42-9bd0-79a6986d73bc",
+                    "status": "pending",
                     "total_run_time": 0
                 }
             }
         },
-        "2025-02-11 10:35:13": {
+        "2025-02-16 14:07:27": {
             "status": "pending",
             "tasks": {
                 "get_data": {
-                    "id": "c3dab8f5-e418-4a22-9e44-eb21b9177dbe",
+                    "id": "7b4e1f23-6406-400a-91b0-fb0e5b14875b",
                     "status": "pending",
                     "total_run_time": 0
                 },
                 "process_data": {
-                    "id": "db08ef1f-5d5c-4297-8558-aecafc2b6f26",
+                    "id": "fe676471-bae1-46a6-b20e-ac386327a00c",
                     "status": "pending",
                     "total_run_time": 0
                 },
                 "write_to_db": {
-                    "id": "1e6ccc79-37f1-4a46-a37d-66ccd2d502b3",
+                    "id": "3bf8fab8-4ded-4133-8c38-10207d2fee5a",
                     "status": "pending",
                     "total_run_time": 0
                 }
             }
         }
     },
-    "dag2.py": {
-        "2025-02-11 11:04:59": {
-            "status": "success",
-            "tasks": {
-                "read_data": {
-                    "id": "5b2b0324-e21d-4e14-8fdc-0874081b8a8b",
-                    "status": "success",
-                    "total_run_time": 0
-                },
-                "send_email": {
-                    "id": "622eaaa9-587a-4ad2-9da8-09f664304891",
-                    "status": "success",
-                    "total_run_time": 0
-                }
-            }
-        }
-    },
+    "dag2.py": {},
     "dag3.py": {},
     "dag4.py": {}
 }
