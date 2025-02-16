@@ -17,7 +17,7 @@ class TestReadData(unittest.TestCase):
         data = {11: "eleven", 4: "four", 3: "three", 5: "five"}
         self.assertEqual("eleven", read_data.sort_runs_by_scheduled_date(data)[3])
 
-    def test_merge_data(self):
+    def test_merge_data_pass(self):
         meta_data = {"dag1.py": ["get_data"],
                      "dag2.py": ["get_data", "get_more_data"]}
         runs_data = {
@@ -60,4 +60,4 @@ class TestReadData(unittest.TestCase):
                 }
             }
         }
-        print(read_data.merge_data(meta_data, runs_data))
+        self.assertEqual('green', read_data.merge_data(meta_data, runs_data)['dag1.py']['get_data'][0])
