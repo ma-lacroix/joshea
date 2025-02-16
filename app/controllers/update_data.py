@@ -11,7 +11,7 @@ def fetch_workflow_task_names(dag_name: str) -> list:
     return get_json(values.META_DATA)['workflows'][f"{dag_name}"]
 
 
-def update_dag_task_run_status(dag_name: str, task_name: str, id: str, new_status: RUN_STATUS, top_level=False) -> None:
+def update_dag_task_run_status(dag_name: str, task_name: str, id: str, new_status: RUN_STATUS, top_level=False) -> bool:
     """
     Updates the DAG's run data. When set to True, the top_level parameter overwrites the DAG's overall status.
     """
@@ -20,6 +20,7 @@ def update_dag_task_run_status(dag_name: str, task_name: str, id: str, new_statu
     if top_level:
         runs_data[dag_name][id]['status'] = new_status
     write_json(runs_data, values.RUNS_DATA)
+    return True
 
 
 def validate_dag_execution_request(dag_name: str, id: str) -> bool:
@@ -36,14 +37,18 @@ def execute_dag(dag_name: str, id: str) -> dict:
     task_names = fetch_workflow_task_names(dag_name)
     for i, task in enumerate(task_names):
         try:
-            update_dag_task_run_status(dag_name, task, id, RUN_STATUS.RUNNING)
-            execute_dag_task(dag_name, task)
-            update_dag_task_run_status(dag_name, task, id, RUN_STATUS.SUCCESS, i == len(task_names) - 1)
+            if update_dag_task_run_status(dag_name, task, id, RUN_STATUS.RUNNING):
+                execute_dag_task(dag_name, task)
+            else:
+                print(f"Failed to update task to {RUN_STATUS.RUNNING}")
+            if update_dag_task_run_status(dag_name, task, id, RUN_STATUS.SUCCESS, i == len(task_names) - 1):
+                sleep(2)
+            else:
+                print(f"Failed to update task to {RUN_STATUS.SUCCESS}")
         except Exception as e:
             print(f"Failed task {task} from {dag_name}: {e}")
             update_dag_task_run_status(dag_name, task, id, RUN_STATUS.FAILED, top_level=True)
             return {'status': RUN_STATUS.FAILED, 'completed': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-        sleep(2)
     return {'status': RUN_STATUS.SUCCESS, 'completed': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
 

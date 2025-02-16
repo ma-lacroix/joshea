@@ -41,7 +41,23 @@
             }
         }
     },
-    "dag2.py": {},
+    "dag2.py": {
+        "2025-02-11 11:04:59": {
+            "status": "success",
+            "tasks": {
+                "read_data": {
+                    "id": "5b2b0324-e21d-4e14-8fdc-0874081b8a8b",
+                    "status": "success",
+                    "total_run_time": 0
+                },
+                "send_email": {
+                    "id": "622eaaa9-587a-4ad2-9da8-09f664304891",
+                    "status": "success",
+                    "total_run_time": 0
+                }
+            }
+        }
+    },
     "dag3.py": {},
     "dag4.py": {}
 }
