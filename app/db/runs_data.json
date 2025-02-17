@@ -1,46 +1,5 @@
 {
-    "dag1.py": {
-        "2025-02-16 14:07:24": {
-            "status": "pending",
-            "tasks": {
-                "get_data": {
-                    "id": "62c3aa34-2045-4657-9011-2b6fc0849787",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                "process_data": {
-                    "id": "22627a45-a72a-4c5e-b078-7dc1f9250a31",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                "write_to_db": {
-                    "id": "efc519c1-7aa4-4f42-9bd0-79a6986d73bc",
-                    "status": "pending",
-                    "total_run_time": 0
-                }
-            }
-        },
-        "2025-02-16 14:07:27": {
-            "status": "pending",
-            "tasks": {
-                "get_data": {
-                    "id": "7b4e1f23-6406-400a-91b0-fb0e5b14875b",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                "process_data": {
-                    "id": "fe676471-bae1-46a6-b20e-ac386327a00c",
-                    "status": "pending",
-                    "total_run_time": 0
-                },
-                "write_to_db": {
-                    "id": "3bf8fab8-4ded-4133-8c38-10207d2fee5a",
-                    "status": "pending",
-                    "total_run_time": 0
-                }
-            }
-        }
-    },
+    "dag1.py": {},
     "dag2.py": {},
     "dag3.py": {},
     "dag4.py": {}
