@@ -48,7 +48,7 @@ jobs:
         git diff --quiet || (git commit -m "Update test coverage" && git push) 
     - name: Update README with coverage
       run: |
-        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" 
+        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f%%", $1 * 100}')
         perl -i -pe "s/^📊 Coverage:.*/📊 **Coverage: $COVERAGE** [![Coverage Badge](https://img.shields.io/badge/coverage-$COVERAGE-brightgreen)]/" README.md
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
