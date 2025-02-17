@@ -1,4 +1,4 @@
-📊 Coverage: 72.05%
+[![Coverage Badge](https://img.shields.io/badge/coverage-72.05%-brightgreen)]
 
 ## Jo_shea data workflow handler
 
