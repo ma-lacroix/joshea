@@ -38,12 +38,3 @@ def run_dag() -> json:
 def reset_meta_data() -> json:
     return jsonify(delete_data.flush_meta_data())
 
-
-@app.route('/u/update_existing', methods=['POST'])
-def update_dag():
-    pass
-
-
-@app.route('/d/remove_existing', methods=['POST'])
-def remove():
-    pass
