@@ -41,3 +41,11 @@ class TestUpdateData(unittest.TestCase):
                                                                       task_name='get_data',
                                                                       new_status=RUN_STATUS.RUNNING))
 
+    @patch('app.controllers.update_data.validate_dag_execution_request', return_value=False)
+    def test_execute_dag_fail(self, mock_validate_dag_execution_request):
+        self.assertEqual({'status': RUN_STATUS.FAILED, 'message': 'Run ID does not exist'},
+                         update_data.execute_dag("test", "test"))
+
+
+
+
