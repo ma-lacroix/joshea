@@ -40,9 +40,9 @@ jobs:
         pytest --cov=app --cov-report=xml:coverage.xml --cov-report=term
     - name: Update README with coverage
       run: |
-        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f", $1 * 100}')
+        COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.1f", $1 * 100}')
         COVERAGE_ENCODED=$(echo $COVERAGE | sed 's/%/%%25/')
-        perl -i -pe "s|^!\[Coverage Badge\]\(https:\/\/img.shields.io\/badge\/coverage-[0-9.]+-brightgreen\)|![Coverage Badge](https://img.shields.io/badge/coverage-$COVERAGE_ENCODED-brightgreen)|" README.md
+        perl -i -pe "s|^!\[Coverage Badge\]\(https:\/\/img.shields.io\/badge\/coverage-[0-9.]+-brightgreen\)|![Coverage Badge](https://img.shields.io/badge/cov-$COVERAGE_ENCODED-blue)|" README.md
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add README.md
