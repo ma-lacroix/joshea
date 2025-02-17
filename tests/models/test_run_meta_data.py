@@ -5,7 +5,7 @@ from app.models.run_meta_data import DagRunMetaData
 from app.models.task_run_meta_data import TaskRunMetaData
 
 
-class TestModels(unittest.TestCase):
+class TestModelsDagRunMetaData(unittest.TestCase):
 
     def setUp(self):
         self.dag = DagRunMetaData(RUN_STATUS.PENDING, {'task1': TaskRunMetaData("a", RUN_STATUS.RUNNING, 0)})

@@ -2,7 +2,6 @@ import unittest
 from unittest.mock import patch, mock_open
 
 from app.controllers import validator
-from app.models.dag_meta_data import DagMetaData
 
 
 class TestValidator(unittest.TestCase):

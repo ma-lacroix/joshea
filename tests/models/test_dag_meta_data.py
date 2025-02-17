@@ -3,7 +3,7 @@ import unittest
 from app.models.dag_meta_data import DagMetaData
 
 
-class TestModels(unittest.TestCase):
+class TestModelsDagMetaData(unittest.TestCase):
 
     def setUp(self):
         self.dag = DagMetaData("test_name", ['task1', 'task2'])
