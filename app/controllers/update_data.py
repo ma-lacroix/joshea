@@ -36,26 +36,30 @@ def execute_dag(dag_name: str, id: str) -> dict:
         return {'status': RUN_STATUS.FAILED, 'message': 'Run ID does not exist'}
     task_names = fetch_workflow_task_names(dag_name)
     for i, task in enumerate(task_names):
-        try:
-            if update_dag_task_run_status(dag_name, task, id, RUN_STATUS.RUNNING):
-                execute_dag_task(dag_name, task)
-            else:
-                print(f"Failed to update task to {RUN_STATUS.RUNNING}")
-            if update_dag_task_run_status(dag_name, task, id, RUN_STATUS.SUCCESS, i == len(task_names) - 1):
-                sleep(2)
-            else:
-                print(f"Failed to update task to {RUN_STATUS.SUCCESS}")
-        except Exception as e:
-            print(f"Failed task {task} from {dag_name}: {e}")
-            update_dag_task_run_status(dag_name, task, id, RUN_STATUS.FAILED, top_level=True)
-            return {'status': RUN_STATUS.FAILED, 'completed': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+        retries = 0
+        while retries < values.RETRIES:
+            try:
+                if update_dag_task_run_status(dag_name, task, id, RUN_STATUS.RUNNING):
+                    execute_dag_task(dag_name, task)
+                else:
+                    print(f"Failed to update task to {RUN_STATUS.RUNNING}")
+                if update_dag_task_run_status(dag_name, task, id, RUN_STATUS.SUCCESS, i == len(task_names) - 1):
+                    sleep(2)
+                    break
+                else:
+                    print(f"Failed to update task to {RUN_STATUS.SUCCESS}")
+            except Exception as e:
+                print(f"Failed task {task} from {dag_name}: {e}")
+                update_dag_task_run_status(dag_name, task, id, RUN_STATUS.PENDING)
+                retries += 1
+                if retries == values.RETRIES:
+                    update_dag_task_run_status(dag_name, task, id, RUN_STATUS.FAILED, top_level=True)
+                    return {'status': RUN_STATUS.FAILED, 'completed': datetime.datetime
+                        .now().strftime('%Y-%m-%d %H:%M:%S')}
     return {'status': RUN_STATUS.SUCCESS, 'completed': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 
 
 def execute_dag_task(dag_name: str, task_name: str) -> None:
-    module = importlib.import_module(f"app.dags.{dag_name.replace('.py','')}")
+    module = importlib.import_module(f"app.dags.{dag_name.replace('.py', '')}")
     func = getattr(module, task_name)
     func()
-
-
-

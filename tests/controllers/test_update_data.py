@@ -42,10 +42,21 @@ class TestUpdateData(unittest.TestCase):
                                                                       new_status=RUN_STATUS.RUNNING))
 
     @patch('app.controllers.update_data.validate_dag_execution_request', return_value=False)
-    def test_execute_dag_fail(self, mock_validate_dag_execution_request):
+    def test_execute_dag_validation_fail(self, mock_validate_dag_execution_request):
         self.assertEqual({'status': RUN_STATUS.FAILED, 'message': 'Run ID does not exist'},
                          update_data.execute_dag("test", "test"))
 
+    @patch('app.controllers.update_data.fetch_workflow_task_names', return_value={"workflows": {"dd1.py": ["get_data", "process_data", "write_to_db"]}})
+    @patch('app.controllers.update_data.validate_dag_execution_request', return_value=True)
+    @patch('app.controllers.update_data.update_dag_task_run_status', return_value=True)
+    @patch('app.controllers.update_data.execute_dag_task', return_value=None)
+    def test_execute_dag_pass(self, mock_task_names, mock_validate_req, mock_run_status, mock_task_execution):
+        self.assertEqual(RUN_STATUS.SUCCESS, update_data.execute_dag("test", "id").get('status'))
 
-
-
+    @patch('app.controllers.update_data.fetch_workflow_task_names', return_value={"workflows": {"dd1.py": ["get_data", "process_data", "write_to_db"]}})
+    @patch('app.controllers.update_data.validate_dag_execution_request', return_value=True)
+    @patch('app.controllers.update_data.update_dag_task_run_status', return_value=True)
+    @patch('app.controllers.update_data.execute_dag_task', side_effect=Exception("Task execution failed"))
+    @patch("time.sleep", return_value=None)
+    def test_execute_dag_pass(self, mock_task_names, mock_validate_req, mock_run_status, mock_task_execution, mock_sleep):
+        self.assertEqual(RUN_STATUS.FAILED, update_data.execute_dag("test", "id").get('status'))

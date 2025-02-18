@@ -1,10 +1,5 @@
 {
     "workflows": {
-        "dag1.py": [
-            "get_data",
-            "process_data",
-            "write_to_db"
-        ],
         "dag2.py": [
             "read_data",
             "send_email"
@@ -17,6 +12,11 @@
         ],
         "dag4.py": [
             "get_data"
+        ],
+        "dag_1.py": [
+            "get_data",
+            "process_data",
+            "write_to_db"
         ]
     }
 }

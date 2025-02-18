@@ -1,6 +1,27 @@
 {
-    "dag1.py": {},
     "dag2.py": {},
     "dag3.py": {},
-    "dag4.py": {}
+    "dag4.py": {},
+    "dag_1.py": {
+        "2025-02-18 12:41:25": {
+            "status": "success",
+            "tasks": {
+                "get_data": {
+                    "id": "ebd59233-503c-449a-b8a7-d8e058d3e884",
+                    "status": "success",
+                    "total_run_time": 0
+                },
+                "process_data": {
+                    "id": "d254099c-81fd-45fb-985a-6764545f3323",
+                    "status": "success",
+                    "total_run_time": 0
+                },
+                "write_to_db": {
+                    "id": "052c98cf-8cb6-4b4f-b127-b6f19165ee9e",
+                    "status": "success",
+                    "total_run_time": 0
+                }
+            }
+        }
+    }
 }
