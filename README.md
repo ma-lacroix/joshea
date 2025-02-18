@@ -1,4 +1,4 @@
-![Coverage Badge](https://img.shields.io/badge/cov-73.39-blue)
+![Coverage Badge](https://img.shields.io/badge/cov--blue)
 
 ## Jo_shea data workflow handler
 
