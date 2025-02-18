@@ -42,7 +42,7 @@ jobs:
       run: |
         COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f", $1 * 100}')
         echo "📊 Coverage now at $COVERAGE"
-        perl -i -pe "s|(https://img.shields.io/badge/cov-)[0-9.]+(-blue)|\1$COVERAGE\2|" README.md
+        sed -i "s|\(https://img.shields.io/badge/cov-\)[0-9.]\+\(-blue\)|\1$COVERAGE\2|" README.md
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"        
         git add README.md
