@@ -1,4 +1,4 @@
-![Coverage Badge](https://img.shields.io/badge/cov-77.25-blue) 
+![Coverage Badge](https://img.shields.io/badge/cov-77.25-blue)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Last Commit](https://img.shields.io/github/last-commit/ma-lacroix/joshea)
 
