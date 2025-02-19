@@ -3,33 +3,39 @@
 ![Last Commit](https://img.shields.io/github/last-commit/ma-lacroix/joshea)
 
 ## Jo_shea data workflow handler
+A simple Flask-based workflow orchestrator with a minimalistic UI.
 
-### Goal: 
-create a home-made ETL workflow orchestrator to deepen my understanding of such tech
+### Quick install and run locally using Docker:
+```sh
+git clone https://github.com/ma-lacroix/joshea.git
+cd joshea
+make build-and-run
+```
+Then head to http://localhost:5000/ from your favorite browser.
 
-### Functional requirements:
-User actions:
-- Be able to submit a new DAG
-- Be able to modify an existing DAG
-- Be able to see the last X runs of a DAG
-- Be able to delete an existing DAG
+### How to use
+WIP - Stay tuned.
 
-DAG operations capabilities:
-- Run some Python code, steps will be explicit and not rely on pre-determined operators like Airflow
+#### About: 
+A personal project with the goal of creating a home-made ETL workflow orchestrator. For self-education purposes. 
+I got the idea listening to [ThePrimeTime](https://www.youtube.com/@ThePrimeTimeagen/) suggesting to build your own, 
+stripped-down version of the tools you use on a regular basis to deepen your understanding of the underlying challenges 
+engineers faced while building them. 
 
-User Interface:
-- Minimalist: will allow users to see DAGs, their last runs and a few buttons to manipulate the DB CRUD-style. 
+I immediately thought of [Apache Airflow](https://airflow.apache.org/), 
+a highly popular workflow manager that I interact with daily.   
 
-### Non-Functional requirements:
-- Code parser must be able to translate a DAG into meta data
-- Must be capable of orchestrating steps and max 3 DAGs simultaneously
-- Nothing about latency, data size & scale for now
-- Have a retry mechanism if a step fails
+#### Original functional requirements:
+Users should be able to
+- submit a new DAG
+- modify an existing DAG
+- see the last X runs of a DAG
+- see the status of each task from any given DAG
+- to delete an existing DAG
 
-##### Language(s) used: 
-Python, maybe something else eventually 
-
-##### Backend: 
-Flask, maybe some AWS database and some hosting service that can run Flask applications
+#### Original non-Functional requirements:
+- A parser must be able to translate a DAG into meta data
+- Tasks must be executed in order while keeping track of their statuses 
+- Tasks must have a retry mechanism should it fail
 
 ###### Last updated: 2025-02-19 20:22:49
