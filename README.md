@@ -30,4 +30,6 @@ User Interface:
 Python, maybe something else eventually 
 
 ##### Backend: 
-Flask, maybe some AWS database and some hosting service that can run Flask applications 
+Flask, maybe some AWS database and some hosting service that can run Flask applications
+
+###### Last updated: 2025-02-19 21:18:00 
