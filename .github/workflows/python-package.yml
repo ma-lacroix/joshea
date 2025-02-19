@@ -40,7 +40,9 @@ jobs:
     - name: Update README with coverage
       run: |
         COVERAGE=$(xmlstarlet sel -t -v "/coverage/@line-rate" coverage.xml | awk '{printf "%.2f", $1 * 100}')
-        echo "📊 Coverage now at $COVERAGE"
+        TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+        echo "📊 Coverage now at $COVERAGE on $TIMESTAMP"
+        sed -i "s/^###### Last updated: .*/###### Last updated: $TIMESTAMP/" README.md
         sed -i "1s|.*|![Coverage Badge](https://img.shields.io/badge/cov-$COVERAGE-blue)|" README.md
         head -n 1 README.md
         git config --global user.name "github-actions[bot]"
