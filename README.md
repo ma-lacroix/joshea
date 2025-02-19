@@ -2,7 +2,9 @@
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Last Commit](https://img.shields.io/github/last-commit/ma-lacroix/joshea)
 
-## Jo_shea data workflow handler
+## JoShea data workflow handler
+<img src="app/static/images/logo.jpeg" alt="App Screenshot" width="100">
+
 A simple Flask-based workflow orchestrator with a minimalistic UI.
 
 ### Quick install and run locally using Docker:
