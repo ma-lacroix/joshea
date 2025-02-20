@@ -38,3 +38,9 @@ class TestGetNextDagRun(unittest.TestCase):
         response = self.app.post("/d/remove_all", json={"test": True})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.get_json(), {"status": "all good"})
+
+    @patch("app.main.delete_data.delete_workflow", return_value={"status": "all good"})
+    def test_delete_dag(self, mock_schedule):
+        response = self.app.post("/d/remove_dag", json={"test": True})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(), {"status": "all good"})
