@@ -26,7 +26,7 @@ PYTHONPATH=. flask --app app/main run
 Once again, head to http://localhost:5000/ from your favorite browser.
 
 ### How to run DAGs
-Simply put, drop your Python code into the `app/dags` folder. The DAGs are defined simply by adding these comments at the bottom of your DAG files:
+Simply put, drop your Python code into the `app/dags` folder. The DAGs are defined simply by adding these comments at the bottom of your DAG files, defining the order your functions should run:
 ```commandline
 # _tasks_
 # get_data() >> process_data() >> write_to_db()
