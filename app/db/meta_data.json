@@ -1,6 +1,10 @@
 {
     "workflows": {
-        "example1.py": "na_dag_deleted",
+        "example1.py": [
+            "get_data",
+            "process_data",
+            "write_to_db"
+        ],
         "example2.py": [
             "read_data",
             "send_email"

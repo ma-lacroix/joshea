@@ -44,8 +44,8 @@
             <br/>
         {% endfor %}
         <br/>
-        <button class="button button-secondary" onclick="manageDAGs('removeAll')" style="display: inline-block;">Flush all DAGs</button>
         <button class="button button-secondary-green" onclick="manageDAGs('findAll')" style="display: inline-block;">Find new DAGs</button>
+        <button class="button button-secondary" onclick="manageDAGs('removeAll')" style="display: inline-block;">Flush all DAGs</button>
         <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
     </body>
     <footer style="text-align: center; margin-top: 2rem; font-size: 14px; color: #777;">
