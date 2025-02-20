@@ -1,4 +1,4 @@
-![Coverage Badge](https://img.shields.io/badge/cov-77.57-blue)
+![Coverage Badge](https://img.shields.io/badge/cov-78.31-blue)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Last Commit](https://img.shields.io/github/last-commit/ma-lacroix/joshea)
 
@@ -40,4 +40,4 @@ Users should be able to
 - Tasks must be executed in order while keeping track of their statuses 
 - Tasks must have a retry mechanism should it fail
 
-###### Last updated: 2025-02-20 14:01:17
+###### Last updated: 2025-02-20 14:04:14
