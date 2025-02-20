@@ -1,27 +1,52 @@
 {
-    "dag2.py": {},
-    "dag3.py": {},
-    "dag4.py": {},
-    "dag_1.py": {
-        "2025-02-18 12:41:25": {
+    "example1.py": {
+        "2025-02-20 10:43:44": {
             "status": "success",
             "tasks": {
                 "get_data": {
-                    "id": "ebd59233-503c-449a-b8a7-d8e058d3e884",
+                    "id": "71ad69dc-2e23-425f-a890-efd7c874e465",
                     "status": "success",
                     "total_run_time": 0
                 },
                 "process_data": {
-                    "id": "d254099c-81fd-45fb-985a-6764545f3323",
+                    "id": "682d8187-e2a6-4a37-a254-12692d25a13a",
                     "status": "success",
                     "total_run_time": 0
                 },
                 "write_to_db": {
-                    "id": "052c98cf-8cb6-4b4f-b127-b6f19165ee9e",
+                    "id": "69253a5e-52d6-4e33-b818-e32994414a1a",
                     "status": "success",
                     "total_run_time": 0
                 }
             }
         }
+    },
+    "example2.py": {
+        "2025-02-20 10:48:00": {
+            "status": "success",
+            "tasks": {
+                "read_data": {
+                    "id": "93bd6cf5-28b9-49f3-8c52-8b59867623a5",
+                    "status": "success",
+                    "total_run_time": 0
+                },
+                "send_email": {
+                    "id": "db29c70b-46e2-455f-8939-9623f60a4a8e",
+                    "status": "success",
+                    "total_run_time": 0
+                }
+            }
+        }
+    },
+    "workflows": {
+        "example1.py": [
+            "get_data",
+            "process_data",
+            "write_to_db"
+        ],
+        "example2.py": [
+            "read_data",
+            "send_email"
+        ]
     }
 }

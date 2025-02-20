@@ -5,6 +5,7 @@ class RUN_STATUS:
     FAILED = "failed"
     PENDING = "pending"
     EMPTY = "empty"
+    DELETED = "na_dag_deleted"
     colors = {
         "running": "blue",
         "success": "green",

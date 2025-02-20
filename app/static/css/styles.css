@@ -45,12 +45,28 @@ button {
 .button-primary:hover {
     background-color: #9ddb93;
 }
+.button-primary-red {
+    background-color: #f90f3a;
+    padding: 4px 9px;
+    font-size: 10px;
+    color: white;
+}
+.button-primary-red:hover {
+    background-color: #f797a9;
+}
 .button-secondary {
     background-color: #cf1b1b;
     color: white;
 }
 .button-secondary:hover {
     background-color: #d47474;
+}
+.button-secondary-green {
+    background-color: #028f1d;
+    color: white;
+}
+.button-secondary-green:hover {
+    background-color: #baf9c6;
 }
 table {
     margin: 9px 0 9px 0;

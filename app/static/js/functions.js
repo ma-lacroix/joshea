@@ -78,3 +78,25 @@ async function handleNextDagRun(dag_name) {
         alert(`An error occurred: ${error.message}`);
     }
 }
+async function deleteDAG(dag_name) {
+    try {
+        const response = await fetch('/d/remove_dag', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name: dag_name }) // Corrected JSON format
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            alert('Deleted DAG: ' + dag_name);
+            location.reload();
+        } else {
+            alert('Failed to delete DAG. Status: ' + response.status);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred: ' + error.message);
+    }
+}

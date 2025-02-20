@@ -38,3 +38,9 @@ def run_dag() -> json:
 def reset_meta_data() -> json:
     return jsonify(delete_data.flush_meta_data())
 
+
+@app.route('/d/remove_dag', methods=['POST'])
+def delete_dag() -> json:
+    dag_info = request.get_json()
+    return jsonify(delete_data.delete_workflow(dag_info.get('name')))
+

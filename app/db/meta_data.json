@@ -1,22 +1,9 @@
 {
     "workflows": {
-        "dag2.py": [
+        "example1.py": "na_dag_deleted",
+        "example2.py": [
             "read_data",
             "send_email"
-        ],
-        "dag3.py": [
-            "get_data",
-            "get_more_data",
-            "get_a_lot_more_data",
-            "call_client"
-        ],
-        "dag4.py": [
-            "get_data"
-        ],
-        "dag_1.py": [
-            "get_data",
-            "process_data",
-            "write_to_db"
         ]
     }
 }
