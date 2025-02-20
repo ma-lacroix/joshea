@@ -14,10 +14,11 @@
     <body>
         <h1>Active DAGs: </h1>
         {% for dag_name, tasks in dags_meta_info.items() %}
+            <h2 style="margin: 0;">{{ dag_name }}</h2><br/>
             <div style="display: flex; align-items: center; gap: 10px;">
-                <h2 style="margin: 0;">{{ dag_name }}</h2>
                 <button class="button button-primary" onclick="launchDAG('{{ dag_name }}')">Schedule run</button>
                 <button class="button button-primary" onclick="handleNextDagRun('{{ dag_name }}')">Trigger next run</button>
+                <button class="button button-primary-red" onclick="deleteDAG('{{ dag_name }}')">Remove DAG</button>
             </div>
             <br/>
             <table border="1">
@@ -43,8 +44,8 @@
             <br/>
         {% endfor %}
         <br/>
-        <button class="button button-secondary" onclick="manageDAGs('removeAll')" style="display: inline-block;">Remove all DAGs</button>
-        <button class="button button-secondary" onclick="manageDAGs('findAll')" style="display: inline-block;">Find new DAGs</button>
+        <button class="button button-secondary-green" onclick="manageDAGs('findAll')" style="display: inline-block;">Find new DAGs</button>
+        <button class="button button-secondary" onclick="manageDAGs('removeAll')" style="display: inline-block;">Flush all DAGs</button>
         <script src="{{ url_for('static', filename='js/functions.js') }}"></script>
     </body>
     <footer style="text-align: center; margin-top: 2rem; font-size: 14px; color: #777;">

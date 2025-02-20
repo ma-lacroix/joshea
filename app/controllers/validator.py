@@ -11,6 +11,9 @@ def validate_dag(dag: str) -> bool:
 
 
 def parse_dag_file(dag: str) -> DagMetaData:
+    """
+    Reads the Python code and creates metadata
+    """
     tasks = []
     with open(f"app/dags/{dag}", 'r') as file:
         lines = file.readlines()

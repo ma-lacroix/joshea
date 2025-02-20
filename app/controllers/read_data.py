@@ -19,8 +19,13 @@ def sort_runs_by_scheduled_date(dag_runs: dict) -> list:
 
 
 def merge_data(meta_data: dict, dag_runs: dict) -> dict:
+    """
+    Prepares the object that will be displayed by the frontend
+    """
     displayed_data = {}
     for key in meta_data.keys():
+        if meta_data[key] == RUN_STATUS.DELETED:
+            continue
         displayed_data[key] = {}
         sorted_runs = sort_runs_by_scheduled_date(dag_runs[key])
         for task in meta_data[key]:
@@ -29,12 +34,18 @@ def merge_data(meta_data: dict, dag_runs: dict) -> dict:
 
 
 def fetch_dashboard_data():
+    """
+    Returns the object that will be displayed by the frontend
+    """
     meta_data = get_json(values.META_DATA)['workflows']
     dag_runs = get_json(values.RUNS_DATA)
     return merge_data(meta_data, dag_runs)
 
 
 def fetch_next_run(dag_name: str):
+    """
+    Returns the next scheduled run
+    """
     dag_runs = get_json(values.RUNS_DATA).get(dag_name, "")
     if len(dag_runs) == 0:
         return {"dag_name": f"{dag_name}", "next_run": f"DAG does not exist"}
