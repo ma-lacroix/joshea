@@ -1,6 +1,7 @@
 ![Coverage Badge](https://img.shields.io/badge/cov-78.31-blue)
 ![Python](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Last Commit](https://img.shields.io/github/last-commit/ma-lacroix/joshea)
+![Version](https://img.shields.io/badge/version-1.0.0-orange.svg)
 
 ## JoShea data workflow handler
 <img src="app/static/images/logo.jpeg" alt="App Screenshot" width="100">
@@ -15,8 +16,24 @@ make build-and-run
 ```
 Then head to http://localhost:5000/ from your favorite browser.
 
-### How to use
-WIP - Stay tuned.
+### Don't want to use Docker? Run these commands from your CLI:
+```sh
+git clone https://github.com/ma-lacroix/joshea.git
+cd joshea
+pip install -r requirements.txt
+PYTHONPATH=. flask --app app/main run 
+```
+Once again, head to http://localhost:5000/ from your favorite browser.
+
+### How to run DAGs
+Simply put, drop your Python code into the `app/dags` folder. The DAGs are defined simply by adding these comments at the bottom of your DAG files:
+```commandline
+# _tasks_
+# get_data() >> process_data() >> write_to_db()
+```
+You can refer to the attached examples in this repo. 
+
+***
 
 #### About: 
 A personal project with the goal of creating a home-made ETL workflow orchestrator. For self-education purposes. 
